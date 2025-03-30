@@ -1,4 +1,4 @@
-package org.example;
+package ru.nsu.smirnovdanilov;
 
 import java.io.IOException;
 import java.util.Scanner;

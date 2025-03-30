@@ -1,5 +1,4 @@
-package org.example;
-import java.util.regex.*;
+package ru.nsu.smirnovdanilov;
 
 public class Utilits {
     private static boolean isCorrectUsername(String username) {

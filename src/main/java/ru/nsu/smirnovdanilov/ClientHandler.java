@@ -1,4 +1,4 @@
-package org.example;
+package ru.nsu.smirnovdanilov;
 
 import javax.websocket.*;
 import java.net.URI;
