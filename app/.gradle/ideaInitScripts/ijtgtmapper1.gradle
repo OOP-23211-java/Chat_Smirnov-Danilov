@@ -1,0 +1,8 @@
+ext.pathMapper = [:]
+ext.pathMapper.put('C:/Program Files/JetBrains/IntelliJ IDEA 2024.3.2.2/lib/external-system-rt.jar', '/mnt/c/Program Files/JetBrains/IntelliJ IDEA 2024.3.2.2/lib/external-system-rt.jar')
+ext.pathMapper.put('C:/Program Files/JetBrains/IntelliJ IDEA 2024.3.2.2/plugins/gradle/lib/gradle-tooling-extension-api.jar', '/mnt/c/Program Files/JetBrains/IntelliJ IDEA 2024.3.2.2/plugins/gradle/lib/gradle-tooling-extension-api.jar')
+ext.pathMapper.put('C:/Program Files/JetBrains/IntelliJ IDEA 2024.3.2.2/plugins/gradle/lib/gradle-tooling-extension-impl.jar', '/mnt/c/Program Files/JetBrains/IntelliJ IDEA 2024.3.2.2/plugins/gradle/lib/gradle-tooling-extension-impl.jar')
+ext.pathMapper.put('//wsl.localhost/Ubuntu/home/ivan/.gradle/jdks/eclipse_adoptium-21-amd64-linux.2/bin/java', '/home/ivan/.gradle/jdks/eclipse_adoptium-21-amd64-linux.2/bin/java')
+ext.pathMapper.put('//wsl.localhost/Ubuntu/home/ivan/NSU/oopJava/lab2Chat', '/home/ivan/NSU/oopJava/lab2Chat')
+ext.pathMapper.put("<<target java executable path>>", '/home/ivan/.gradle/jdks/eclipse_adoptium-21-amd64-linux.2/bin/java')
+ext.mapPath = { path -> pathMapper.get(path) ?: path }

@@ -1,0 +1,41 @@
+plugins {
+    id 'application'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.glassfish.tyrus.bundles:tyrus-standalone-client:1.17'
+    implementation 'org.xerial:sqlite-jdbc:3.44.1.0'
+
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.17.0'
+    implementation 'com.fasterxml.jackson.core:jackson-core:2.17.0'
+    implementation 'com.fasterxml.jackson.core:jackson-annotations:2.17.0'
+
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.10.1'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+}
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(21)
+    }
+}
+
+application {
+    mainClass = 'org.example.ChatClient'
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}
+
+tasks.register('runClient', JavaExec) {
+    group = "application"
+    description = "Запуск клиента"
+    mainClass.set('org.example.ChatClient')
+    classpath = sourceSets.main.runtimeClasspath
+    args = ['alice', '1']
+}
