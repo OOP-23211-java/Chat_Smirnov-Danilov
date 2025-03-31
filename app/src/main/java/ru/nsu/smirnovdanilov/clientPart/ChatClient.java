@@ -5,6 +5,10 @@ import java.io.IOException;
 import java.util.Scanner;
 import java.util.logging.*;
 
+/**
+ * Главный класс клиента чата.
+ * Отвечает за установку соединения с сервером..
+ */
 public class ChatClient {
 
     private static final Logger LOGGER = Logger.getLogger(ChatClient.class.getName());
@@ -47,6 +51,9 @@ public class ChatClient {
         }
     }
 
+    /**
+     * Настраивает логер, включая запись в файл и удаляет консольные.
+     */
     private static void configureLogger() {
         try {
             FileHandler fileHandler = new FileHandler("chat.log", true);
@@ -54,7 +61,6 @@ public class ChatClient {
             LOGGER.addHandler(fileHandler);
             LOGGER.setLevel(Level.ALL);
 
-            // Удаление стандартного обработчика консоли
             Logger rootLogger = Logger.getLogger("");
             for (Handler handler : rootLogger.getHandlers()) {
                 if (handler instanceof ConsoleHandler) {
@@ -66,6 +72,11 @@ public class ChatClient {
         }
     }
 
+    /**
+     * Получает и выводит состояние сервера
+     * @param clientHandler - обработчик клиента для взаимодействия с сервером
+     * @return {@code true}, если состояние успешно получено, иначе {@code false}.
+     */
     private static boolean printServerState(ClientHandler clientHandler) {
         try {
             String stateFilename = clientHandler.waitForServerState();
@@ -79,6 +90,13 @@ public class ChatClient {
         }
     }
 
+    /**
+     * Обрабатывает выбор комнаты
+     * @param scanner для чтения с консоли
+     * @param clientHandler обработчик клиента чтобы обновить комнату
+     * @param currentRoom текущий номер комнаты
+     * @return выбранный номер комнаты
+     */
     private static String handleRoomSelection(Scanner scanner, ClientHandler clientHandler, String currentRoom) {
         System.out.printf("Вы указали комнату '%s'. Для подтверждения/отклонения введите (Y/n): ", currentRoom);
         String answer = scanner.nextLine().trim();
@@ -96,6 +114,12 @@ public class ChatClient {
         }
     }
 
+    /**
+     * Обрабатывает отправку сообщений и выполнение команд
+     * @param scanner для чтения с консоли
+     * @param clientHandler обработчик клиента для отправки сообщений
+     * @param roomNumber текущий номер комнаты
+     */
     private static void processChat(Scanner scanner, ClientHandler clientHandler, String roomNumber) {
         System.out.println("Текущая комната: " + roomNumber);
         System.out.print("Введите сообщение (или 'exit' для выхода, 'list' для запроса состояния чата): ");
