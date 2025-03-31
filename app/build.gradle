@@ -1,0 +1,25 @@
+plugins {
+    id 'application'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.glassfish.tyrus:tyrus-server:1.17'
+    implementation 'org.glassfish.tyrus:tyrus-container-grizzly-server:1.17'
+    implementation 'javax.websocket:javax.websocket-api:1.1'
+    implementation 'org.xerial:sqlite-jdbc:3.44.1.0'
+    implementation 'org.json:json:20231013'
+}
+
+application {
+    mainClass = 'ru.nsu.smirnovdanilov.server.ChatServer'
+}
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(21)
+    }
+}
